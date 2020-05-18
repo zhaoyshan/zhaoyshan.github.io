@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Zhaoyshan&#39;博客😜</title>
+  
+  <subtitle>Zhaoyshan&#39;Blog</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://zhaoyshan.top/"/>
+  <updated>2020-05-18T03:58:00.455Z</updated>
+  <id>http://zhaoyshan.top/</id>
+  
+  <author>
+    <name>Zhaoyshan</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo</title>
+    <link href="http://zhaoyshan.top/2020/05/16/Hexo/"/>
+    <id>http://zhaoyshan.top/2020/05/16/Hexo/</id>
+    <published>2020-05-16T12:02:14.000Z</published>
+    <updated>2020-05-18T03:58:00.455Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-根据hexo搭建博客只有三步骤："><a href="#1-根据hexo搭建博客只有三步骤：" class="headerlink" title="1.根据hexo搭建博客只有三步骤："></a>1.根据hexo搭建博客只有三步骤：</h1><hr><p>1、下载git到本地<br>2、下载Node.js<br>3、下载hexo</p><h1 id="2-详细步骤"><a href="#2-详细步骤" class="headerlink" title="2.详细步骤"></a>2.详细步骤</h1><p>（1.下载git：直接到官方网站下载安装就ok了（windows傻瓜式教程<br>注：自己还是要会一点git的一些基础操作<br>（2.下载Node.js:也是到官方网站下载安装即可<br>（3.下载hexo：<br>    3.1.在本地创建一个文件夹（用来装博客的所用东西）<br>    3.2进入文件夹右键，在右键列表中点击git bush 进入git<br>    3.3下载hexo<br>        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure><br>    3.4初始化<br>        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure><br>hexo会自动下载一些相关的文件<br>注意：如果不能识别hexo命令将下面的路径加入环境变量中<br>C:\Users\user\AppData\Roaming\npm\node_modules\hexo-cli\bin    </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$hexo g #生成</span><br><span class="line">$hexo server #启动服务</span><br></pre></td></tr></table></figure><p>到这步的时候，自己的博客就已经搭建完成了。在网址中输入<code>localhost:4000</code>出现页面就表示成功了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;1-根据hexo搭建博客只有三步骤：&quot;&gt;&lt;a href=&quot;#1-根据hexo搭建博客只有三步骤：&quot; class=&quot;headerlink&quot; title=&quot;1.根据hexo搭建博客只有三步骤：&quot;&gt;&lt;/a&gt;1.根据hexo搭建博客只有三步骤：&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;1
+      
+    
+    </summary>
+    
+    
+      <category term="搭建博客" scheme="http://Zhaoyshan.top/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="hexo" scheme="http://Zhaoyshan.top/tags/hexo/"/>
+    
+      <category term="matery" scheme="http://Zhaoyshan.top/tags/matery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自律、冷静</title>
+    <link href="http://zhaoyshan.top/2020/05/12/hello-world/"/>
+    <id>http://zhaoyshan.top/2020/05/12/hello-world/</id>
+    <published>2020-05-12T11:46:42.429Z</published>
+    <updated>2020-05-18T03:55:35.998Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="现在-你不努力让自己过上想要的生活-那你以后-就会用大把的时间-去应付自己不想要的生活。"><a href="#现在-你不努力让自己过上想要的生活-那你以后-就会用大把的时间-去应付自己不想要的生活。" class="headerlink" title="现在,你不努力让自己过上想要的生活,那你以后,就会用大把的时间,去应付自己不想要的生活。"></a>现在,你不努力让自己过上想要的生活,那你以后,就会用大把的时间,去应付自己不想要的生活。</h4>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;现在-你不努力让自己过上想要的生活-那你以后-就会用大把的时间-去应付自己不想要的生活。&quot;&gt;&lt;a href=&quot;#现在-你不努力让自己过上想要的生活-那你以后-就会用大把的时间-去应付自己不想要的生活。&quot; class=&quot;headerlink&quot; title=&quot;现在,你
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
