@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo, Zhaoyshan&#39;博客😜">
+    <meta name="keywords" content="spring总结(IOC), Zhaoyshan&#39;博客😜">
     <meta name="description" content="认真的你，是最帅的自己">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo | Zhaoyshan&#39;博客😜</title>
+    <title>spring总结(IOC) | Zhaoyshan&#39;博客😜</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@ if (windowWidth > 768) {
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo</h1>
+                    <h1 class="description center-align post-title">spring总结(IOC)</h1>
                 </div>
             </div>
         </div>
@@ -359,12 +359,12 @@ if (windowWidth > 768) {
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
+                            <a href="/tags/spring/">
+                                <span class="chip bg-color">spring</span>
                             </a>
                         
-                            <a href="/tags/matery/">
-                                <span class="chip bg-color">matery</span>
+                            <a href="/tags/IOC/">
+                                <span class="chip bg-color">IOC</span>
                             </a>
                         
                     </div>
@@ -375,8 +375,8 @@ if (windowWidth > 768) {
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                搭建博客
+                            <a href="/categories/spring%E6%80%BB%E7%BB%93-IOC/" class="post-category">
+                                spring总结(IOC)
                             </a>
                         
                     </div>
@@ -388,7 +388,7 @@ if (windowWidth > 768) {
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-16
+                    2020-05-29
                 </div>
                 
 
@@ -404,12 +404,167 @@ if (windowWidth > 768) {
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-根据hexo搭建博客只有三步骤："><a href="#1-根据hexo搭建博客只有三步骤：" class="headerlink" title="1.根据hexo搭建博客只有三步骤："></a>1.根据hexo搭建博客只有三步骤：</h1><hr>
-<p>1、下载git到本地<br>2、下载Node.js<br>3、下载hexo</p>
-<h1 id="2-详细步骤"><a href="#2-详细步骤" class="headerlink" title="2.详细步骤"></a>2.详细步骤</h1><p>（1.下载git：直接到官方网站下载安装就ok了（windows傻瓜式教程<br>注：自己还是要会一点git的一些基础操作<br>（2.下载Node.js:也是到官方网站下载安装即可<br>（3.下载hexo：<br>    3.1.在本地创建一个文件夹（用来装博客的所用东西）<br>    3.2进入文件夹右键，在右键列表中点击git bush 进入git<br>    3.3下载hexo<br>        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure><br>    3.4初始化<br>        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure><br>hexo会自动下载一些相关的文件<br>注意：如果不能识别hexo命令将下面的路径加入环境变量中<br>C:\Users\user\AppData\Roaming\npm\node_modules\hexo-cli\bin    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$hexo g #生成</span><br><span class="line">$hexo server #启动服务</span><br></pre></td></tr></table></figure>
-<p>到这步的时候，自己的博客就已经搭建完成了。在网址中输入<code>localhost:4000</code>出现页面就表示成功了</p>
+                <h2 id="spring总结（IOC）"><a href="#spring总结（IOC）" class="headerlink" title="##spring总结（IOC）    "></a>##spring总结（IOC）    </h2><pre><code>1. bean的声明周期总结：
+        1、容器创建
+        2、调用bean构造方法
+        3、给bean属性赋值
+        4、调用beanq前置处理器：BeanPostProcessor
+        6、调用bean 的初始化方法
+        5、调用bean后置处理器：BeanPostProcessor
+        7、bean的创建完成
+        8、容器关闭，调用销毁方法
 
+2. spring标签及属性：
+    bean：
+        id：是唯一标识符（相当于方法名称）
+        class：是类路径
+    property:
+        name：就是类中的属性 （指认set()方法）
+        value：就是属性的值
+    constructor-arg：
+        index就是参数的位置  （从0开始的）
+        name就是指定参数的名字
+        value就是赋值操作
+        type：就是用来指定赋值的类型 （name ，type，index可以只选一个）
+     注意：    
+            1、如果没有指定位置 那么默认是构造方法的顺序
+         2、当指定位置之后 就可以进行 其它位置的赋值 index就是用来指定位置的 索引是从0开始的
+         3、在实体类中一定要有对应的构造方法，而且必要要有无参构造方法
+
+    注意：xml文件中&lt; 和 &amp; 都是不能解析
+       需要ji来解析
+                 &lt;![CDATA[&quot;需要赋的值&quot;]]&gt;
+                 &lt;![CDATA[&lt;Benz&gt;]]&gt;
+3. 引用类型赋值：
+     * 单个对象：1、使用ref: ref引用的 一定提前配置,连接bean中的其它类对象的赋值  也就是说ref就是配置好的id
+            (```)
+                &lt;bean id=&quot;person&quot; class=&quot;com.zys.entity.Person&quot;&gt;
+                    &lt;property name=&quot;name&quot; value=&quot;jack&quot;/&gt;
+                    &lt;property name=&quot;age&quot; value=&quot;22&quot;/&gt;
+                    &lt;property name=&quot;cars&quot; ref=&quot;car&quot;/&gt;
+                &lt;/bean&gt;
+
+            (```)
+             2、也可以使用内部bean来赋值（内部bean可以不写id了  前面的value也可以不写了),内部bean不能被其它引用  只能自己使用（内部类）
+            (```)
+                &lt;bean id=&quot;person1&quot; class=&quot;com.zys.entity.Person&quot;&gt;
+                    &lt;property name=&quot;name&quot; value=&quot;jack&quot;/&gt;
+                    &lt;property name=&quot;age&quot; value=&quot;22&quot;/&gt;
+                    &lt;property name=&quot;cars&quot;&gt;
+                        &lt;bean class=&quot;com.zys.entity.Car&quot;&gt;
+                            &lt;property name=&quot;production&quot; value=&quot;sichuan &quot;/&gt;
+                            &lt;property name=&quot;name&quot;&gt;
+                                &lt;value&gt;BYD&lt;/value&gt;
+                            &lt;/property&gt;
+                            &lt;property name=&quot;price&quot; value=&quot;22&quot;/&gt;
+                        &lt;/bean&gt;
+                    &lt;/property&gt;
+                &lt;/bean&gt;
+            (```)
+        注意：如何给一个值赋值为null  （不给那个赋值就行了，不调用 默认是null的嘛）还有就是加一个null标签` &lt;property name=&quot;cars&quot;&gt;&lt;null/&gt;&lt;/property&gt; `
+
+    * 集合对象：list,set,map
+        List：使用list标签 为list类型的属性赋值 ref中的bean也要出现在配置属性中
+         Set:的使用跟list是一样的  也就是讲list换成set就行了
+         Map:使用map标签来赋值  map是k-value的键值对   所以有一个entry标签 在它的内部有key 和value属性。如果value是引用类型的话 就用 value-ref这个属性
+        下面是list与map 的示例
+        (```)
+            &lt;bean id=&quot;user_list&quot; class=&quot;com.zys.entity.User&quot;&gt;
+                &lt;property name=&quot;username&quot; value=&quot;Jack&quot;/&gt;
+                &lt;property name=&quot;cars&quot;&gt;
+                    &lt;list&gt;
+                        &lt;ref bean=&quot;car&quot;/&gt;
+                        &lt;bean class=&quot;com.zys.entity.Car&quot;&gt;
+                            &lt;constructor-arg index=&quot;0&quot; value=&quot;sichuan&quot;/&gt;
+                            &lt;constructor-arg value=&quot;BYD&quot;/&gt;
+                            &lt;constructor-arg value=&quot;22&quot;/&gt;
+                        &lt;/bean&gt;
+                    &lt;/list&gt;
+                &lt;/property&gt;
+            &lt;/bean&gt;
+            &lt;bean id=&quot;use_map&quot; class=&quot;com.zys.entity.User&quot;&gt;
+                &lt;property name=&quot;username&quot; value=&quot;Jack&quot;/&gt;
+                &lt;property name=&quot;mp&quot;&gt;
+                    &lt;map&gt;
+                        &lt;entry key=&quot;heihei&quot; value-ref=&quot;car1&quot;/&gt;
+                    &lt;/map&gt;
+                &lt;/property&gt;
+            &lt;/bean&gt;
+        (```)
+        也可以将list和其它的集合封装一下
+        (```)
+            &lt;util:list id=&quot;list&quot;&gt;
+                &lt;ref bean=&quot;car&quot;/&gt;
+                &lt;ref bean=&quot;car1&quot;/&gt;
+                &lt;bean class=&quot;com.zys.entity.Car&quot;&gt;
+                    &lt;constructor-arg value=&quot;sichuan&quot;/&gt;
+                    &lt;constructor-arg value=&quot;BYD&quot;/&gt;
+                    &lt;constructor-arg value=&quot;22&quot;/&gt;
+                &lt;/bean&gt;
+            &lt;/util:list&gt;
+        (```)
+
+4. 通过spel进行赋值
+    * 如果是String类型的话：就要加一个单引号
+    * 如果整型 ， 浮点型 就直接用数字表示  就行了
+    * 如果是一个实体类的话就可以直接进行调用其中的属性
+    (```)
+        &lt;bean id=&quot;person&quot; class=&quot;com.zys.spel.Person&quot;&gt;
+            &lt;property name=&quot;name&quot; value=&quot;Jack&quot;/&gt;
+            &lt;property name=&quot;car&quot; value=&quot;#{car}&quot;/&gt;
+    &lt;!--        &lt;property name=&quot;city&quot; value=&quot;#{address.city}&quot;/&gt;--&gt;
+            &lt;property name=&quot;city&quot; value=&quot;#{address.city}&quot;/&gt;
+            &lt;property name=&quot;info&quot; value=&quot;#{car.price &gt; 50 ? &apos;金领&apos;:&apos;白领&apos;}&quot;/&gt;
+            &lt;property name=&quot;length&quot; value=&quot;#{#{T(Math).PI * 80}}&quot;/&gt;
+        &lt;/bean&gt;
+    (```)
+
+5. bean之间的关系（依赖，抽象）
+    bean的依赖关系：
+         dapends-on：用来表示y一个bean A的实例化  依赖另外一个bean B的实例化，但是A并不需要持有B的对象（说白了 它不是一个赋值对象）
+                     指定某个bean初始化必须依赖于另一个bean，如果其依赖的bean不存在,则其初始化失败
+                      如果要使用多个bean 就用“，”分割
+           ref：通常是用来给引用对象赋值，也要求赋值的对象初始化，并且还要使用初始化的对象
+    (```)
+        &lt;bean id=&quot;person&quot; class=&quot;com.zys.relation.Person&quot; depends-on=&quot;car&quot;&gt;
+            &lt;property name=&quot;name&quot; value=&quot;Jack&quot;/&gt;
+            &lt;property name=&quot;address&quot; ref = &quot;address1&quot;/&gt;
+            &lt;property name=&quot;car&quot; ref=&quot;car&quot;/&gt;
+        &lt;/bean&gt;
+    (```)
+
+    * 当加上abstract之后就不能 被实例化了 跟抽象类是一样的
+    * parent属性 也可以是不同的类之间的赋值
+    * Spring 允许继承 bean 的配置, 被继承的 bean 称为父 bean. 继承这个父 Bean 的 Bean 称为子 Bean
+    * 子 Bean 从父 Bean 中继承配置, 包括 Bean 的属性配置
+    * 子 Bean 也可以覆盖从父 Bean 继承过来的配置
+    * 父 Bean 可以作为配置模板, 也可以作为 Bean 实例. 若只想把父 Bean 作为模板, 可以设置 &lt;bean&gt; 的abstract 属性为 true,这样 Spring 将不会实例化这个 Bean
+    * 并不是 &lt;bean&gt; 元素里的所有属性都会被继承. 比如: autowire, abstract 等.也可以忽略父 Bean 的 class 属性, 让子 Bean 指定自己的类, 而共享相同的属性配置. 但此时 abstract 必须设为 true
+
+6. bean的作用域
+    通过bean的scop属性来指定
+   bean的作用域一点说明：
+    (1)可以通过bean标签中的scope属性来设置bean的作用域
+         a:singleton 单例
+              当一个bean的作用域为Singleton，
+              那么Spring IoC容器中只会存在一个共享的bean实例，并且所有对bean的请求，只要id与该bean定义相匹配，则只会返回bean的同一实例。
+              Singleton是单例类型，就是在创建起容器时就同时自动创建了一个bean的对象，不管你是否使用，他都存在了，每次获取到的对象都是同一个对象
+         b:prototype 原型
+              表示一个bean定义对应多个对象实例。
+              Prototype作用域的bean会导致在每次对该bean请求（将其注入到另一个bean中，或者以程序的方式调用容器的getBean()方法）时都会创建一个新的bean实例。
+              Prototype是原型类型，它在我们创建容器的时候并没有实例化，而是当我们获取bean的时候才会去创建一个对象，而且我们每次获取到的对象都不是同一个对象。
+        c：Request
+             表示在一次HTTP请求中，一个bean定义对应一个实例；
+             即每个HTTP请求都会有各自的bean实例，它们依据某个bean定义创建而成。
+             该作用域仅在基于web的Spring ApplicationContext情形下有效
+        d：Session
+            表示在一个HTTP Session中，一个bean定义对应一个实例。该作用域仅在基于web的Spring ApplicationContext情形下有效
+        e：Global Session
+              表示在一个全局的HTTP Session中，一个bean定义对应一个实例
+   （2）Spring中的bean默认都是单例的 singleton
+        (```)
+            &lt;bean id=&quot;car&quot; class=&quot;com.zys.scope.Car&quot; scope=&quot;singleton/&gt;
+        (```)</code></pre>
             </div>
             <hr/>
 
@@ -434,7 +589,7 @@ if (windowWidth > 768) {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Zhaoyshan.top/2020/05/16/Hexo/">http://Zhaoyshan.top/2020/05/16/Hexo/</a>
+                    <a href="http://Zhaoyshan.top/2020/05/29/spring%E6%80%BB%E7%BB%93IOC/">http://Zhaoyshan.top/2020/05/29/spring%E6%80%BB%E7%BB%93IOC/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -472,12 +627,12 @@ if (windowWidth > 768) {
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
+                                <a href="/tags/spring/">
+                                    <span class="chip bg-color">spring</span>
                                 </a>
                             
-                                <a href="/tags/matery/">
-                                    <span class="chip bg-color">matery</span>
+                                <a href="/tags/IOC/">
+                                    <span class="chip bg-color">IOC</span>
                                 </a>
                             
                         </div>
@@ -908,9 +1063,10 @@ if (windowWidth > 768) {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/05/29/spring%E6%80%BB%E7%BB%93IOC/">
                     <div class="card-image">
@@ -932,9 +1088,9 @@ if (windowWidth > 768) {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -947,6 +1103,7 @@ if (windowWidth > 768) {
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -969,32 +1126,50 @@ if (windowWidth > 768) {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/12/hello-world/">
+                <a href="/2020/05/16/Hexo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="自律、冷静">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Hexo">
                         
-                        <span class="card-title">自律、冷静</span>
+                        <span class="card-title">Hexo</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            现在,你不努力让自己过上想要的生活,那你以后,就会用大把的时间,去应付自己不想要的生活。
+                            1.根据hexo搭建博客只有三步骤：
+1、下载git到本地2、下载Node.js3、下载hexo
+2.详细步骤（1.下载git：直接到官方网站下载安装就ok了（windows傻瓜式教程注：自己还是要会一点git的一些基础操作（2.下载Nod
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-16
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Zhaoyshan
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    搭建博客
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                    <a href="/tags/matery/">
+                        <span class="chip bg-color">matery</span>
+                    </a>
+                    
                 </div>
                 
             </div>
