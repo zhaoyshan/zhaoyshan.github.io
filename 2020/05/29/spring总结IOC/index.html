@@ -405,18 +405,14 @@ if (windowWidth > 768) {
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="spring总结（IOC）"><a href="#spring总结（IOC）" class="headerlink" title="spring总结（IOC）"></a>spring总结（IOC）</h2><hr>
-<ol>
-<li><p>bean的声明周期总结：</p>
-<pre><code>1、容器创建
-2、调用bean构造方法
-3、给bean属性赋值
-4、调用beanq前置处理器：BeanPostProcessor
-6、调用bean 的初始化方法
-5、调用bean后置处理器：BeanPostProcessor
-7、bean的创建完成
-8、容器关闭，调用销毁方法</code></pre></li>
-<li><p>spring标签及属性：</p>
-<pre><code>bean：
+<h4 id="1-bean的声明周期总结："><a href="#1-bean的声明周期总结：" class="headerlink" title="1. bean的声明周期总结："></a>1. bean的声明周期总结：</h4><pre><code>1. 容器创建
+2. 调用bean构造方法
+3. 给bean属性赋值
+4. 调用beanq前置处理器：BeanPostProcessor
+5. 调用bean 的初始化方法
+6. 调用bean后置处理器：BeanPostProcessor
+7. bean的创建完成
+8. 器关闭，调用销毁方法</code></pre><h4 id="2-spring标签及属性："><a href="#2-spring标签及属性：" class="headerlink" title="2. spring标签及属性："></a>2. spring标签及属性：</h4><pre><code>bean：
     id：是唯一标识符（相当于方法名称）
     class：是类路径
 property:
@@ -434,69 +430,40 @@ constructor-arg：
 注意：xml文件中&lt; 和 &amp; 都是不能解析
    需要ji来解析
              &lt;![CDATA[&quot;需要赋的值&quot;]]&gt;
-             &lt;![CDATA[&lt;Benz&gt;]]&gt;</code></pre></li>
-<li><p>引用类型赋值：</p>
-<ul>
-<li>单个对象：<br>1、 使用ref: ref引用的 一定提前配置,连接bean中的其它类对象的赋值  也就是说ref就是配置好的id<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;person&quot; class&#x3D;&quot;com.zys.entity.Person&quot;&gt;</span><br><span class="line">          &lt;property name&#x3D;&quot;name&quot; value&#x3D;&quot;jack&quot;&#x2F;&gt;</span><br><span class="line">          &lt;property name&#x3D;&quot;age&quot; value&#x3D;&quot;22&quot;&#x2F;&gt;</span><br><span class="line">          &lt;property name&#x3D;&quot;cars&quot; ref&#x3D;&quot;car&quot;&#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
-2、 也可以使用内部bean来赋值（内部bean可以不写id了  前面的value也可以不写了),内部bean不能被其它引用  只能自己使用（内部类）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;person1&quot; class&#x3D;&quot;com.zys.entity.Person&quot;&gt;</span><br><span class="line">          &lt;property name&#x3D;&quot;name&quot; value&#x3D;&quot;jack&quot;&#x2F;&gt;</span><br><span class="line">          &lt;property name&#x3D;&quot;age&quot; value&#x3D;&quot;22&quot;&#x2F;&gt;</span><br><span class="line">          &lt;property name&#x3D;&quot;cars&quot;&gt;</span><br><span class="line">              &lt;bean class&#x3D;&quot;com.zys.entity.Car&quot;&gt;</span><br><span class="line">                  &lt;property name&#x3D;&quot;production&quot; value&#x3D;&quot;sichuan &quot;&#x2F;&gt;</span><br><span class="line">                  &lt;property name&#x3D;&quot;name&quot;&gt;</span><br><span class="line">                      &lt;value&gt;BYD&lt;&#x2F;value&gt;</span><br><span class="line">                  &lt;&#x2F;property&gt;</span><br><span class="line">                  &lt;property name&#x3D;&quot;price&quot; value&#x3D;&quot;22&quot;&#x2F;&gt;</span><br><span class="line">              &lt;&#x2F;bean&gt;</span><br><span class="line">          &lt;&#x2F;property&gt;</span><br><span class="line">      &lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
-注意：如何给一个值赋值为null  （不给那个赋值就行了，不调用 默认是null的嘛）还有就是加一个null标签<code>&lt;property name=&quot;cars&quot;&gt;&lt;null/&gt;&lt;/property&gt;</code></li>
-<li>集合对象：list,set,map<br>List：使用list标签 为list类型的属性赋值 ref中的bean也要出现在配置属性中<br>Set:的使用跟list是一样的  也就是讲list换成set就行了<pre><code> Map:使用map标签来赋值  map是k-value的键值对   所以有一个entry标签 在它的内部有key 和value属性。如果value是引用类型的话 就用 value-ref这个属性
-下面是list与map 的示例</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;user_list&quot; class&#x3D;&quot;com.zys.entity.User&quot;&gt;</span><br><span class="line">       &lt;property name&#x3D;&quot;username&quot; value&#x3D;&quot;Jack&quot;&#x2F;&gt;</span><br><span class="line">       &lt;property name&#x3D;&quot;cars&quot;&gt;</span><br><span class="line">           &lt;list&gt;</span><br><span class="line">               &lt;ref bean&#x3D;&quot;car&quot;&#x2F;&gt;</span><br><span class="line">               &lt;bean class&#x3D;&quot;com.zys.entity.Car&quot;&gt;</span><br><span class="line">                   &lt;constructor-arg index&#x3D;&quot;0&quot; value&#x3D;&quot;sichuan&quot;&#x2F;&gt;</span><br><span class="line">                   &lt;constructor-arg value&#x3D;&quot;BYD&quot;&#x2F;&gt;</span><br><span class="line">                   &lt;constructor-arg value&#x3D;&quot;22&quot;&#x2F;&gt;</span><br><span class="line">               &lt;&#x2F;bean&gt;</span><br><span class="line">           &lt;&#x2F;list&gt;</span><br><span class="line">       &lt;&#x2F;property&gt;</span><br><span class="line">   &lt;&#x2F;bean&gt;</span><br><span class="line">&lt;bean id&#x3D;&quot;use_map&quot; class&#x3D;&quot;com.zys.entity.User&quot;&gt;</span><br><span class="line">       &lt;property name&#x3D;&quot;username&quot; value&#x3D;&quot;Jack&quot;&#x2F;&gt;</span><br><span class="line">       &lt;property name&#x3D;&quot;mp&quot;&gt;</span><br><span class="line">           &lt;map&gt;</span><br><span class="line">               &lt;entry key&#x3D;&quot;heihei&quot; value-ref&#x3D;&quot;car1&quot;&#x2F;&gt;</span><br><span class="line">           &lt;&#x2F;map&gt;</span><br><span class="line">       &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
-也可以将list和其它的集合封装一下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;util:list id&#x3D;&quot;list&quot;&gt;</span><br><span class="line">       &lt;ref bean&#x3D;&quot;car&quot;&#x2F;&gt;</span><br><span class="line">       &lt;ref bean&#x3D;&quot;car1&quot;&#x2F;&gt;</span><br><span class="line">       &lt;bean class&#x3D;&quot;com.zys.entity.Car&quot;&gt;</span><br><span class="line">           &lt;constructor-arg value&#x3D;&quot;sichuan&quot;&#x2F;&gt;</span><br><span class="line">           &lt;constructor-arg value&#x3D;&quot;BYD&quot;&#x2F;&gt;</span><br><span class="line">           &lt;constructor-arg value&#x3D;&quot;22&quot;&#x2F;&gt;</span><br><span class="line">       &lt;&#x2F;bean&gt;</span><br><span class="line">   &lt;&#x2F;util:list&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>通过spel进行赋值</p>
-<ul>
-<li>如果是String类型的话：就要加一个单引号</li>
-<li>如果整型 ， 浮点型 就直接用数字表示  就行了</li>
-<li>如果是一个实体类的话就可以直接进行调用其中的属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	&lt;bean id&#x3D;&quot;person&quot; class&#x3D;&quot;com.zys.spel.Person&quot;&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;name&quot; value&#x3D;&quot;Jack&quot;&#x2F;&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;car&quot; value&#x3D;&quot;#&#123;car&#125;&quot;&#x2F;&gt;</span><br><span class="line">&lt;!--        &lt;property name&#x3D;&quot;city&quot; value&#x3D;&quot;#&#123;address.city&#125;&quot;&#x2F;&gt;--&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;city&quot; value&#x3D;&quot;#&#123;address.city&#125;&quot;&#x2F;&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;info&quot; value&#x3D;&quot;#&#123;car.price &gt; 50 ? &#39;金领&#39;:&#39;白领&#39;&#125;&quot;&#x2F;&gt;</span><br><span class="line">		&lt;property name&#x3D;&quot;length&quot; value&#x3D;&quot;#&#123;#&#123;T(Math).PI * 80&#125;&#125;&quot;&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="5">
-<li><p>bean之间的关系（依赖，抽象）<br> bean的依赖关系：</p>
-<pre><code>dapends-on：用来表示y一个bean A的实例化  依赖另外一个bean B的实例化，但是A并不需要持有B的对象（说白了 它不是一个赋值对象）
-            指定某个bean初始化必须依赖于另一个bean，如果其依赖的bean不存在,则其初始化失败
-             如果要使用多个bean 就用“，”分割
-  ref：通常是用来给引用对象赋值，也要求赋值的对象初始化，并且还要使用初始化的对象</code></pre><p> (```)</p>
-<pre><code>&lt;bean id=&quot;person&quot; class=&quot;com.zys.relation.Person&quot; depends-on=&quot;car&quot;&gt;
-    &lt;property name=&quot;name&quot; value=&quot;Jack&quot;/&gt;
-    &lt;property name=&quot;address&quot; ref = &quot;address1&quot;/&gt;
-    &lt;property name=&quot;car&quot; ref=&quot;car&quot;/&gt;
-&lt;/bean&gt;</code></pre><p> (```)</p>
-<ul>
-<li>当加上abstract之后就不能 被实例化了 跟抽象类是一样的</li>
-<li>parent属性 也可以是不同的类之间的赋值</li>
-<li>Spring 允许继承 bean 的配置, 被继承的 bean 称为父 bean. 继承这个父 Bean 的 Bean 称为子 Bean</li>
-<li>子 Bean 从父 Bean 中继承配置, 包括 Bean 的属性配置</li>
-<li>子 Bean 也可以覆盖从父 Bean 继承过来的配置</li>
-<li>父 Bean 可以作为配置模板, 也可以作为 Bean 实例. 若只想把父 Bean 作为模板, 可以设置 <bean> 的abstract 属性为 true,这样 Spring 将不会实例化这个 Bean</li>
-<li>并不是 <bean> 元素里的所有属性都会被继承. 比如: autowire, abstract 等.也可以忽略父 Bean 的 class 属性, 让子 Bean 指定自己的类, 而共享相同的属性配置. 但此时 abstract 必须设为 true</li>
-</ul>
-</li>
-<li><p>bean的作用域<br> 通过bean的scop属性来指定<br>bean的作用域一点说明：<br> (1)可以通过bean标签中的scope属性来设置bean的作用域</p>
-<pre><code> a:singleton 单例
-      当一个bean的作用域为Singleton，
-      那么Spring IoC容器中只会存在一个共享的bean实例，并且所有对bean的请求，只要id与该bean定义相匹配，则只会返回bean的同一实例。
-      Singleton是单例类型，就是在创建起容器时就同时自动创建了一个bean的对象，不管你是否使用，他都存在了，每次获取到的对象都是同一个对象
- b:prototype 原型
-      表示一个bean定义对应多个对象实例。
-      Prototype作用域的bean会导致在每次对该bean请求（将其注入到另一个bean中，或者以程序的方式调用容器的getBean()方法）时都会创建一个新的bean实例。
-      Prototype是原型类型，它在我们创建容器的时候并没有实例化，而是当我们获取bean的时候才会去创建一个对象，而且我们每次获取到的对象都不是同一个对象。
-c：Request
-     表示在一次HTTP请求中，一个bean定义对应一个实例；
-     即每个HTTP请求都会有各自的bean实例，它们依据某个bean定义创建而成。
-     该作用域仅在基于web的Spring ApplicationContext情形下有效
-d：Session
-    表示在一个HTTP Session中，一个bean定义对应一个实例。该作用域仅在基于web的Spring ApplicationContext情形下有效
-e：Global Session
-      表示在一个全局的HTTP Session中，一个bean定义对应一个实例</code></pre><p>（2）Spring中的bean默认都是单例的 singleton</p>
-<pre><code>(```)
-    &lt;bean id=&quot;car&quot; class=&quot;com.zys.scope.Car&quot; scope=&quot;singleton/&gt;
-(```)</code></pre></li>
-</ol>
-</li>
-</ol>
+             &lt;![CDATA[&lt;Benz&gt;]]&gt;</code></pre><h4 id="3-引用类型赋值："><a href="#3-引用类型赋值：" class="headerlink" title="3. 引用类型赋值："></a>3. 引用类型赋值：</h4><pre><code>* 单个对象：
+1、 使用ref: ref引用的 一定提前配置,连接bean中的其它类对象的赋值  也就是说ref就是配置好的id</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;person&quot; class&#x3D;&quot;com.zys.entity.Person&quot;&gt;</span><br><span class="line">          &lt;property name&#x3D;&quot;name&quot; value&#x3D;&quot;jack&quot;&#x2F;&gt;</span><br><span class="line">          &lt;property name&#x3D;&quot;age&quot; value&#x3D;&quot;22&quot;&#x2F;&gt;</span><br><span class="line">          &lt;property name&#x3D;&quot;cars&quot; ref&#x3D;&quot;car&quot;&#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>2、 也可以使用内部bean来赋值（内部bean可以不写id了  前面的value也可以不写了),内部bean不能被其它引用  只能自己使用（内部类）</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;person1&quot; class&#x3D;&quot;com.zys.entity.Person&quot;&gt;</span><br><span class="line">          &lt;property name&#x3D;&quot;name&quot; value&#x3D;&quot;jack&quot;&#x2F;&gt;</span><br><span class="line">          &lt;property name&#x3D;&quot;age&quot; value&#x3D;&quot;22&quot;&#x2F;&gt;</span><br><span class="line">          &lt;property name&#x3D;&quot;cars&quot;&gt;</span><br><span class="line">              &lt;bean class&#x3D;&quot;com.zys.entity.Car&quot;&gt;</span><br><span class="line">                  &lt;property name&#x3D;&quot;production&quot; value&#x3D;&quot;sichuan &quot;&#x2F;&gt;</span><br><span class="line">                  &lt;property name&#x3D;&quot;name&quot;&gt;</span><br><span class="line">                      &lt;value&gt;BYD&lt;&#x2F;value&gt;</span><br><span class="line">                  &lt;&#x2F;property&gt;</span><br><span class="line">                  &lt;property name&#x3D;&quot;price&quot; value&#x3D;&quot;22&quot;&#x2F;&gt;</span><br><span class="line">              &lt;&#x2F;bean&gt;</span><br><span class="line">          &lt;&#x2F;property&gt;</span><br><span class="line">      &lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>注意：如何给一个值赋值为null  （不给那个赋值就行了，不调用 默认是null的嘛）还有就是加一个null标签` &lt;property name=&quot;cars&quot;&gt;&lt;null/&gt;&lt;/property&gt; `
+* 集合对象：list,set,map
+List：使用list标签 为list类型的属性赋值 ref中的bean也要出现在配置属性中
+Set:的使用跟list是一样的  也就是讲list换成set就行了
+Map:使用map标签来赋值  map是k-value的键值对   所以有一个entry标签 在它的内部有key 和value属性。如果value是引用类型的话 就用 value-ref这个属性
+        下面是list与map 的示例</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;user_list&quot; class&#x3D;&quot;com.zys.entity.User&quot;&gt;</span><br><span class="line">       &lt;property name&#x3D;&quot;username&quot; value&#x3D;&quot;Jack&quot;&#x2F;&gt;</span><br><span class="line">       &lt;property name&#x3D;&quot;cars&quot;&gt;</span><br><span class="line">           &lt;list&gt;</span><br><span class="line">               &lt;ref bean&#x3D;&quot;car&quot;&#x2F;&gt;</span><br><span class="line">               &lt;bean class&#x3D;&quot;com.zys.entity.Car&quot;&gt;</span><br><span class="line">                   &lt;constructor-arg index&#x3D;&quot;0&quot; value&#x3D;&quot;sichuan&quot;&#x2F;&gt;</span><br><span class="line">                   &lt;constructor-arg value&#x3D;&quot;BYD&quot;&#x2F;&gt;</span><br><span class="line">                   &lt;constructor-arg value&#x3D;&quot;22&quot;&#x2F;&gt;</span><br><span class="line">               &lt;&#x2F;bean&gt;</span><br><span class="line">           &lt;&#x2F;list&gt;</span><br><span class="line">       &lt;&#x2F;property&gt;</span><br><span class="line">   &lt;&#x2F;bean&gt;</span><br><span class="line">&lt;bean id&#x3D;&quot;use_map&quot; class&#x3D;&quot;com.zys.entity.User&quot;&gt;</span><br><span class="line">       &lt;property name&#x3D;&quot;username&quot; value&#x3D;&quot;Jack&quot;&#x2F;&gt;</span><br><span class="line">       &lt;property name&#x3D;&quot;mp&quot;&gt;</span><br><span class="line">           &lt;map&gt;</span><br><span class="line">               &lt;entry key&#x3D;&quot;heihei&quot; value-ref&#x3D;&quot;car1&quot;&#x2F;&gt;</span><br><span class="line">           &lt;&#x2F;map&gt;</span><br><span class="line">       &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>也可以将list和其它的集合封装一下</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;util:list id&#x3D;&quot;list&quot;&gt;</span><br><span class="line">       &lt;ref bean&#x3D;&quot;car&quot;&#x2F;&gt;</span><br><span class="line">       &lt;ref bean&#x3D;&quot;car1&quot;&#x2F;&gt;</span><br><span class="line">       &lt;bean class&#x3D;&quot;com.zys.entity.Car&quot;&gt;</span><br><span class="line">           &lt;constructor-arg value&#x3D;&quot;sichuan&quot;&#x2F;&gt;</span><br><span class="line">           &lt;constructor-arg value&#x3D;&quot;BYD&quot;&#x2F;&gt;</span><br><span class="line">           &lt;constructor-arg value&#x3D;&quot;22&quot;&#x2F;&gt;</span><br><span class="line">       &lt;&#x2F;bean&gt;</span><br><span class="line">   &lt;&#x2F;util:list&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-通过spel进行赋值"><a href="#4-通过spel进行赋值" class="headerlink" title="4. 通过spel进行赋值"></a>4. 通过spel进行赋值</h4><pre><code>* 如果是String类型的话：就要加一个单引号
+* 如果整型 ， 浮点型 就直接用数字表示  就行了
+* 如果是一个实体类的话就可以直接进行调用其中的属性</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	&lt;bean id&#x3D;&quot;person&quot; class&#x3D;&quot;com.zys.spel.Person&quot;&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;name&quot; value&#x3D;&quot;Jack&quot;&#x2F;&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;car&quot; value&#x3D;&quot;#&#123;car&#125;&quot;&#x2F;&gt;</span><br><span class="line">&lt;!--        &lt;property name&#x3D;&quot;city&quot; value&#x3D;&quot;#&#123;address.city&#125;&quot;&#x2F;&gt;--&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;city&quot; value&#x3D;&quot;#&#123;address.city&#125;&quot;&#x2F;&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;info&quot; value&#x3D;&quot;#&#123;car.price &gt; 50 ? &#39;金领&#39;:&#39;白领&#39;&#125;&quot;&#x2F;&gt;</span><br><span class="line">		&lt;property name&#x3D;&quot;length&quot; value&#x3D;&quot;#&#123;#&#123;T(Math).PI * 80&#125;&#125;&quot;&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-bean之间的关系（依赖，抽象）"><a href="#5-bean之间的关系（依赖，抽象）" class="headerlink" title="5. bean之间的关系（依赖，抽象）"></a>5. bean之间的关系（依赖，抽象）</h4><p>bean的依赖关系：<br>     dapends-on：用来表示y一个bean A的实例化  依赖另外一个bean B的实例化，但是A并不需要持有B的对象（说白了 它不是一个赋值对象）<br>                 指定某个bean初始化必须依赖于另一个bean，如果其依赖的bean不存在,则其初始化失败<br>                  如果要使用多个bean 就用“，”分割<br>       ref：通常是用来给引用对象赋值，也要求赋值的对象初始化，并且还要使用初始化的对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;person&quot; class&#x3D;&quot;com.zys.relation.Person&quot; depends-on&#x3D;&quot;car&quot;&gt;</span><br><span class="line">             &lt;property name&#x3D;&quot;name&quot; value&#x3D;&quot;Jack&quot;&#x2F;&gt;</span><br><span class="line">             &lt;property name&#x3D;&quot;address&quot; ref &#x3D; &quot;address1&quot;&#x2F;&gt;</span><br><span class="line">             &lt;property name&#x3D;&quot;car&quot; ref&#x3D;&quot;car&quot;&#x2F;&gt;</span><br><span class="line">     	&lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
+
+<pre><code>* 当加上abstract之后就不能 被实例化了 跟抽象类是一样的
+* parent属性 也可以是不同的类之间的赋值
+* Spring 允许继承 bean 的配置, 被继承的 bean 称为父 bean. 继承这个父 Bean 的 Bean 称为子 Bean
+* 子 Bean 从父 Bean 中继承配置, 包括 Bean 的属性配置
+* 子 Bean 也可以覆盖从父 Bean 继承过来的配置
+* 父 Bean 可以作为配置模板, 也可以作为 Bean 实例. 若只想把父 Bean 作为模板, 可以设置 &lt;bean&gt; 的abstract 属性为 true,这样 Spring 将不会实例化这个 Bean
+* 并不是 &lt;bean&gt; 元素里的所有属性都会被继承. 比如: autowire, abstract 等.也可以忽略父 Bean 的 class 属性, 让子 Bean 指定自己的类, 而共享相同的属性配置. 但此时 abstract 必须设为 true</code></pre><h4 id="6-bean的作用域"><a href="#6-bean的作用域" class="headerlink" title="6. bean的作用域"></a>6. bean的作用域</h4><p>通过bean的scop属性来指定<br>bean的作用域一点说明：<br>        (1)可以通过bean标签中的scope属性来设置bean的作用域<br>             a:singleton 单例<br>                  当一个bean的作用域为Singleton，<br>                  那么Spring IoC容器中只会存在一个共享的bean实例，并且所有对bean的请求，只要id与该bean定义相匹配，则只会返回bean的同一实例。<br>                  Singleton是单例类型，就是在创建起容器时就同时自动创建了一个bean的对象，不管你是否使用，他都存在了，每次获取到的对象都是同一个对象<br>             b:prototype 原型<br>                  表示一个bean定义对应多个对象实例。<br>                  Prototype作用域的bean会导致在每次对该bean请求（将其注入到另一个bean中，或者以程序的方式调用容器的getBean()方法）时都会创建一个新的bean实例。<br>                  Prototype是原型类型，它在我们创建容器的时候并没有实例化，而是当我们获取bean的时候才会去创建一个对象，而且我们每次获取到的对象都不是同一个对象。<br>            c：Request<br>                 表示在一次HTTP请求中，一个bean定义对应一个实例；<br>                 即每个HTTP请求都会有各自的bean实例，它们依据某个bean定义创建而成。<br>                 该作用域仅在基于web的Spring ApplicationContext情形下有效<br>            d：Session<br>                表示在一个HTTP Session中，一个bean定义对应一个实例。该作用域仅在基于web的Spring ApplicationContext情形下有效<br>            e：Global Session<br>                  表示在一个全局的HTTP Session中，一个bean定义对应一个实例<br>       （2）Spring中的bean默认都是单例的 singleton</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;car&quot; class&#x3D;&quot;com.zys.scope.Car&quot; scope&#x3D;&quot;singleton&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
 
             </div>
             <hr/>
@@ -1014,14 +981,12 @@ e：Global Session
                     <div class="summary block-with-text">
                         
                             spring总结（IOC）
-
-bean的声明周期总结：
-1、容器创建
-2、调用bean构造方法
-3、给bean属性赋值
-4、调用beanq前置处理器：BeanPostProcessor
-6、调用bean 的初始化方法
-5、调用bean后置处
+1. bean的声明周期总结：1. 容器创建
+2. 调用bean构造方法
+3. 给bean属性赋值
+4. 调用beanq前置处理器：BeanPostProcessor
+5. 调用bean 的初始化方法
+6. 调用
                         
                     </div>
                     <div class="publish-info">
